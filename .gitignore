@@ -1,0 +1,14 @@
+.vscode
+.vscode/
+
+venv
+venv/
+
+train.csv
+titanic.zip
+
+reversed.csv
+every_other.csv
+
+excel_output.xlsx
+excel_output_normalized.xlsx
