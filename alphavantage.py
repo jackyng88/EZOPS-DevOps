@@ -20,7 +20,6 @@ df = df.drop(['Meta Data'], axis=1)
 df = df.reset_index()
 df.columns = ['Date', 'Time Series (Daily)']
 
-
 # Creating a new DataFrame df2 that has the Date column from df and then merge
 # it with the normalized JSON/Dictionary columns so it has open, high, low, 
 # close, and volume as columns instead of remaining as key values in a dict.
@@ -34,4 +33,4 @@ df2.columns = [x.capitalize() for x in df2.columns]
 
 df.to_excel('excel_output.xlsx')
 df2.to_excel('excel_output_normalized.xlsx')
-print(df2)
+#print(df2)
