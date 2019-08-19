@@ -1,11 +1,11 @@
-from flask import Flask, render_template
+from flask import Flask, render_template, redirect, url_for
 import pandas as pd
 
 app = Flask(__name__)
 
 @app.route('/')
-def hello_world():
-   return 'Hello World'
+def front_page():
+   return render_template('front_page.html')
 
 @app.route('/titanic/<type>')
 def titanic(type):
