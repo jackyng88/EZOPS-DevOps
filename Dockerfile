@@ -1,11 +1,13 @@
-FROM centos:7
+FROM python:3.7.2-slim
 
-RUN yum update -y && \
-    yum install -y python-pip python-dev
 
-COPY ./requirements.txt /app/requirements.txt
+RUN pip install --upgrade pip
+
+RUN mkdir /app
 
 WORKDIR /app
+
+COPY ./requirements.txt /app/requirements.txt
 
 RUN pip install -r requirements.txt
 
