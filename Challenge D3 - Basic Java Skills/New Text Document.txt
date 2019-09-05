@@ -1,0 +1,8 @@
+
+How to set up Break Points in Eclipse
+
+1. One of the ways we can set a break point in Eclipse is if you look at the left margin of your Eclipse there are numbers which indicate the code line number. If you double click either the number, or even further left you can set a breakpoint on that line. Successfully setting a breakpoint shows a green circle to the left of that line number you set the break point at.
+
+2. Another way to set a breakpoint in Eclipse is to move your text cursor to the line you want to set a breakpoint at. If you then hit the key combination of (Control + Shift + B) you can set a break point. Note - all three buttons should be hit in tandem. For example don't hit control then let go of it and then hit shift and let go of that. What you want is to hit control and while holding it down hit shift and B (while also holding those buttons down). 
+
+So now when you run the debugger or try to execute your code with a breakpoint set the code will "break" or stop execution on the line that you specified it to stop at. 
