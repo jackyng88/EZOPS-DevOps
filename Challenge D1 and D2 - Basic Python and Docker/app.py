@@ -1,5 +1,8 @@
 from flask import Flask, render_template, redirect, url_for
 import pandas as pd
+import requests
+from pandas.io.json import json_normalize
+
 
 app = Flask(__name__)
 
@@ -39,8 +42,39 @@ def alphavantage():
     return render_template('alphavantage_view.html',tables=[data.to_html(classes='female')],
            titles = ['AlphaVantage Microsoft'])
 
+
+def alphavantage_msft():
+    # Script to pull from Microsoft daily series from the AlphaVantage API
+    url = 'https://www.alphavantage.co/query?function=TIME_SERIES_DAILY&symbol=MSFT&apikey=demo'
+    r = requests.get(url)
+    data = r.content
+
+    df = pd.read_json(data)
+    df = df.iloc[6:]
+    df = df.drop(['Meta Data'], axis=1)
+    df = df.reset_index()
+    df.columns = ['Date', 'Time Series (Daily)']
+
+    df2 = df['Date']
+    normalized = json_normalize(df['Time Series (Daily)'])
+    df2 = pd.concat([df2, normalized], axis=1, sort=False)
+    df2.columns = df2.columns.str.extract(r'([a-zA-Z]+)', expand=False)
+    df2.columns = [x.capitalize() for x in df2.columns]
+
+    # df.to_excel('excel_output.xlsx')
+    df2.to_excel('excel_output_normalized.xlsx')
     
+def titanic_data():
+    # Function to transform training data for later use.
+    df_titanic = pd.read_csv('train.csv')
+    df_titanic_cols = df_titanic.columns.tolist()
+    cols_rev = df_titanic_cols[::-1]
+    df_titanic[cols_rev].to_csv('reversed.csv')
+    every_other_cols = df_titanic.columns[::2]
+    df_titanic[every_other_cols].to_csv('every_other.csv')
 
 
 if __name__ == '__main__':
-   app.run(host='0.0.0.0')
+    titanic_data()
+    alphavantage_msft()
+    app.run(host='0.0.0.0')

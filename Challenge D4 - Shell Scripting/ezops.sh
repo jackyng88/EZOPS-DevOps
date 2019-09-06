@@ -1,4 +1,4 @@
-#1/bin/bash
+#!/bin/bash
 
 wget -O train.csv "https://www.kaggle.com/c/titanic/download/train.csv"
 
