@@ -15,4 +15,8 @@ awk  'BEGIN{
 
 awk 'BEGIN{FS=","} {s=$NF; for (i=1; i<=NF; i+=2) printf ("%s%c", $i, i + 2 <= NF ? "," : "\n") }' train.csv > every_other.csv
 
-awk 'BEGIN {FS=","} {s=$NF; for {i=1; i<=NF; i+=3) printf ("$s
+awk -F, 'function rev(x) {r=""; 
+                            for(j=length(x);j;j--) r=r substr(x,j,1); 
+                            return r}
+           BEGIN {OFS=FS} 
+                 {for(i=1;i<NF;i+=3) $i=rev($i)}1' train.csv > reverse_third_col.csv
