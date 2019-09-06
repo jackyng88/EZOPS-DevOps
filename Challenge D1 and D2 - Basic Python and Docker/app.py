@@ -34,6 +34,8 @@ def titanic(type):
 def alphavantage():
     # Function for the alphavantage endpoint. Displays daily Microsoft info.
 
+    # Calling this function to make sure we have an up-to-date dataset.
+    alphavantage_msft()
 
     data = pd.read_excel('excel_output_normalized.xlsx')
     data.drop('Unnamed: 0', inplace=True, axis=1)
