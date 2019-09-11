@@ -1,0 +1,43 @@
+version: '3'
+
+services:
+  mysql:
+    image: mysql:latest
+    restart: always
+    ports:
+      - 3306:3306
+    environment:
+      MYSQL_DATABASE: 'db'
+      MYSQL_USER: 'user'
+      MYSQL_PASSWORD: 'password'
+      MYSQL_ROOT_PASSWORD: 'password'
+    networks:
+      - EZOPS_CHALLENGE
+
+  mq:
+    image: ibmcom/mq:latest
+    ports:
+      - "1414:1414"
+    environment:
+        - LICENSE=accept
+        - MQ_QMGR_NAME=MQA01
+    volumes:
+        - ./files:/var/mqm
+    stdin_open: true
+    tty: true
+    restart: always
+    command: >
+      sh -c "cat ezops.txt"
+    networks:
+      - EZOPS_CHALLENGE
+
+  tomcat:
+    image: tomcat:latest
+    ports:
+      - "8080:8080"
+    networks:
+      - EZOPS_CHALLENGE
+
+networks:
+  EZOPS_CHALLENGE:
+    
