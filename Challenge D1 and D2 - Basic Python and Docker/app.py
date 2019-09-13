@@ -77,6 +77,7 @@ def titanic_data():
 
 
 if __name__ == '__main__':
-    titanic_data()
-    alphavantage_msft()
+    #titanic_data()
+    #alphavantage_msft()
+    app.config['TEMPLATES_AUTO_RELOAD'] = True
     app.run(host='0.0.0.0')
