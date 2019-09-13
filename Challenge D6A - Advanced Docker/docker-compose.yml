@@ -23,13 +23,15 @@ services:
     environment:
         - LICENSE=accept
         - MQ_QMGR_NAME=MQA01
+        - MQSNOAUT=yes
     volumes:
-        - ./files:/var/mqm
+        - ./files:/mnt/mqm
     stdin_open: true
     tty: true
     restart: always
+    user: admin
     command: >
-      sh -c "cat /mnt/mqm/data/ezops.txt"
+      bash -c "cat mnt/mqm/ezpops.txt"
     networks:
       - EZOPS_CHALLENGE
     deploy:
