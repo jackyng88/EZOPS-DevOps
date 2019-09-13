@@ -29,7 +29,7 @@ services:
     tty: true
     restart: always
     command: >
-      sh -c "cd ./files && cat ezops.txt"
+      sh -c "cat /mnt/mqm/data/ezops.txt"
     networks:
       - EZOPS_CHALLENGE
     deploy:
