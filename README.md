@@ -37,12 +37,12 @@
 
 #### 2. ezops.sh is the complete script that pulls the .csv files and reverses columns, grabs every other column, as well
         as the newest option - to reverse text in every third column. Run it on any Linux/Mac terminal. Note that on 
-        Windows since there's you might have to run it with cygwin on command-prompt or powershell.
+        Windows since you might not have acess to sh you might have to run it with cygwin on command-prompt or powershell.
         
 
 ### Challenge D5 - Basic SQL
 
-#### 1. You can test the table creation/queries on a site like dbfiddle.com
+#### 1. You can test the table creation/queries on a site like db-fiddle.com
 
 #### 2. Test by grabbing the create and insert statements to create table.
 
